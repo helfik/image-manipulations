@@ -13,15 +13,16 @@ class ImagesController extends Controller
      * @return void
      */
 
-    public function processImage() {
+    public function processImage()
+    {
         Image::configure(array('driver' => 'gd'));
 
-        if(Input::file('image')) {
+        if (Input::file('image')) {
             $image = Image::make(Input::file('image')->getRealPath())
                 ->blur(15)
                 ->colorize(-10, 0, 30)
                 ->brightness(15)
-                ->text('Superhero Cheesecake', 220, 220, function($font) {
+                ->text('Superhero Cheesecake', 220, 220, function ($font) {
                     $font->file('fonts/JosefinSans-Bold.ttf');
                     $font->size(50);
                     $font->color(array(139, 0, 0, 0.5));
@@ -36,6 +37,6 @@ class ImagesController extends Controller
         } else {
             return with('No file selected');
         }
-
     }
 }
+
