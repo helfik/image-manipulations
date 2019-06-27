@@ -14,15 +14,15 @@ class ImagesController extends Controller
      */
 
     public function processImage() {
-        Image::configure(array('driver' => 'imagick'));
+        Image::configure(array('driver' => 'gd'));
 
-        $image = Image::make(Input::file('image'))->grayscale()->pixelate(12)->text('Superhero Cheesecake', 0, 0, function($font) {
+        $image = Image::make(Input::file('image')->getRealPath())->pixelate(12)->text('Superhero Cheesecake', 0, 0, function($font) {
             $font->file('JosefinSans-Bold.ttf');
             $font->size(50);
             $font->color('#ff0000');
             $font->align('center');
-            $font->valign('top');
-            $font->angle(45);
+            $font->valign('center');
+            $font->angle(90);
         });;
 
         $image->save();

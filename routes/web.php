@@ -16,7 +16,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'api'], function () use ($router) {
-    $router->put('process-image/', ['uses' => 'ImagesController@processImage']);
+    $router->post('process-image/', ['uses' => 'ImagesController@processImage']);
 });
 
 
